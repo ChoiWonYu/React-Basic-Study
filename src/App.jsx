@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Board from "./Board";
+import Board from "./board/Board";
 
 function App() {
   const [redUser, setRedUser] = useState([]);
   const [blueUser, setBlueUser] = useState([]);
   const [isRedTurn, setIsRedTurn] = useState(true);
   const numList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   useEffect(() => {
     if (isWin(redUser)) alert("Red Win");
     else if (isWin(blueUser)) alert("Blue Win");
   }, [redUser, blueUser]);
+
   const handleBoardClick = (num) => {
     if (isRedTurn) setRedUser(redUser.concat([num]).sort());
     else setBlueUser(blueUser.concat([num]).sort());
     setIsRedTurn(!isRedTurn);
     console.log("hi");
   };
+
   const isWin = (user) => {
     if (user.length >= 3) {
       if (user[0] + user[2] === 2 * user[1]) return true;
@@ -24,7 +27,7 @@ function App() {
     }
     return false;
   };
-  console.log(blueUser, redUser);
+
   return (
     <Container>
       {numList.map((num) => (
