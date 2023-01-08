@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Board from "./board/Board";
+import { isWin } from "./util/isWin";
 
 function App() {
   const [redUser, setRedUser] = useState([]);
@@ -12,14 +13,6 @@ function App() {
     if (isWin(redUser)) alert("Red Win");
     else if (isWin(blueUser)) alert("Blue Win");
   }, [redUser, blueUser]);
-
-  const isWin = (user) => {
-    if (user.length >= 3) {
-      if (user[0] + user[2] === 2 * user[1]) return true;
-      if (user.length === 4 && user[1] + user[3] === 2 * user[4]) return true;
-    }
-    return false;
-  };
 
   const handleBoardClick = (num) => {
     if (isRedTurn) setRedUser(redUser.concat([num]).sort());
