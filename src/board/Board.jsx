@@ -13,9 +13,7 @@ const Board = ({ id, redUser, blueUser, onClick }) => {
       isRedSelect={isRedSelect}
       isBlueSelect={isBlueSelect}
       onClick={onClick}
-    >
-      {id}
-    </Container>
+    />
   );
 };
 
