@@ -7,7 +7,7 @@ const Board = ({ id, redUser, blueUser, onClick }) => {
   useEffect(() => {
     if (redUser.includes(id)) setIsRedSelect(true);
     else if (blueUser.includes(id)) setIsBlueSelect(true);
-  });
+  }, [redUser, blueUser]);
   return (
     <Container
       isRedSelect={isRedSelect}
