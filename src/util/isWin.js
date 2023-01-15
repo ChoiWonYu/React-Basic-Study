@@ -1,7 +1,15 @@
+import { winData } from "../data/win";
+
+export const intersect = (f, s) => {
+  return f.filter((v) => s.includes(v));
+};
+
 export const isWin = (user) => {
   if (user.length >= 3) {
-    if (user[0] + user[2] === 2 * user[1]) return true;
-    if (user.length === 4 && user[1] + user[3] === 2 * user[4]) return true;
+    let i = 0;
+    for (i in winData) {
+      if (intersect(winData[i], user).length === 3) return true;
+    }
   }
   return false;
 };
