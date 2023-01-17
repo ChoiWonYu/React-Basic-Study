@@ -11,6 +11,7 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyle />
         <Header />
+        <Container></Container>
       </ThemeProvider>
     </>
   );
