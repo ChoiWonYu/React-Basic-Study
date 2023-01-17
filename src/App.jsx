@@ -1,7 +1,19 @@
 import react from "react";
+import { GlobalStyle } from "./style/GlobalStyle";
+import "./style/GlobalFont.css";
+import Header from "./components/Header";
+import { defaultTheme } from "./style/theme";
+import { ThemeProvider } from "styled-components";
 
 function App() {
-  return;
+  return (
+    <>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle />
+        <Header />
+      </ThemeProvider>
+    </>
+  );
 }
 
 export default App;
