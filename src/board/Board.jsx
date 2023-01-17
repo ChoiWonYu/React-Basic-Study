@@ -5,9 +5,11 @@ const Board = ({ id, redUser, blueUser, onClick }) => {
   const [isRedSelect, setIsRedSelect] = useState(false);
   const [isBlueSelect, setIsBlueSelect] = useState(false);
   useEffect(() => {
-    if (redUser.includes(id)) setIsRedSelect(true);
-    else if (blueUser.includes(id)) setIsBlueSelect(true);
-    else {
+    if (redUser.includes(id)) {
+      setIsRedSelect(true);
+    } else if (blueUser.includes(id)) {
+      setIsBlueSelect(true);
+    } else {
       setIsBlueSelect(false);
       setIsRedSelect(false);
     }
