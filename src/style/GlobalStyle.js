@@ -7,10 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body{
-    margin : 0 auto;
+    margin : 0 20px;
+    overflow-x: hidden;
     padding:0;
     font-family: 'NetflixSans';
     color : white;
+    background-color: ${(props) => props.theme.black};
   }
   button{
     display: flex;

@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Series from "./Series";
-import Rank from "./Rank";
+import MovieMenu from "./MovieMenu";
 
 const Content = () => {
   return (
     <Container>
-      <Rank name="오늘 대한민국의 TOP 10영화" />
-      <Series name="해외 시리즈" />
-      <Series name="시리즈" />
+      <MovieMenu isRank={true} name="오늘 대한민국의 TOP 10영화" />
+      <MovieMenu isRank={false} name="해외 시리즈" />
+      <MovieMenu isRank={false} name="시리즈" />
     </Container>
   );
 };
