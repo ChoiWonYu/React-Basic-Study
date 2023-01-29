@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   body{
     margin : 0 20px;
-    overflow-x: hidden;
     padding:0;
     font-family: 'NetflixSans';
     color : white;
