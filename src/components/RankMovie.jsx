@@ -1,14 +1,13 @@
-import React from "react";
 import styled from "styled-components";
 import { RankData } from "../style/RankData";
-import Movie from "../asset/movie.png";
 
 const RankMovie = ({ img, rank, handleClick }) => {
+  console.log(`${process.env.REACT_APP_IMAGE}${img}`);
   return (
     <Container>
       <Content onClick={handleClick}>
         <Number src={RankData[rank]} />
-        <Poster src={Movie} />
+        <Poster src={`${process.env.REACT_APP_IMAGE}${img}`} />
       </Content>
     </Container>
   );

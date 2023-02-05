@@ -3,13 +3,11 @@ import CommonMovie from "./CommonMovie";
 import RankMovie from "./RankMovie";
 import { slideSetting } from "../data/SlideConfig";
 import Slider from "react-slick";
-import { MovieData } from "../data/MovieData";
 import { useState } from "react";
 import ModalPotal from "./ModalPotal";
 import MovieModal from "./MovieModal";
 
-const MovieMenu = ({ isRank, name }) => {
-  const Movies = MovieData.results;
+const MovieMenu = ({ isRank, name, movies }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [info, setInfo] = useState(null);
 
@@ -20,7 +18,7 @@ const MovieMenu = ({ isRank, name }) => {
   const handleClick = (movieInfo) => {
     setIsOpen(true);
     setInfo(movieInfo);
-    console.log(isOpen);
+    console.log(movieInfo);
   };
 
   return (
@@ -30,25 +28,30 @@ const MovieMenu = ({ isRank, name }) => {
           <MovieModal handleClose={closeModal} info={info} />
         </ModalPotal>
       )}
+
       {name}
-      <Slider {...slideSetting}>
-        {Movies.map((movieInfo, idx) =>
-          isRank ? (
-            <RankMovie
-              key={movieInfo.id}
-              img={movieInfo.poster_path}
-              rank={idx}
-              handleClick={() => handleClick(movieInfo)}
-            />
-          ) : (
-            <CommonMovie
-              key={movieInfo.id}
-              img={movieInfo.poster_path}
-              handleClick={() => handleClick(movieInfo)}
-            />
-          )
-        )}
-      </Slider>
+      {movies && (
+        <>
+          <Slider {...slideSetting}>
+            {movies.map((movieInfo, idx) =>
+              isRank ? (
+                <RankMovie
+                  key={movieInfo.id}
+                  img={movieInfo.poster_path}
+                  rank={idx}
+                  handleClick={() => handleClick(movieInfo)}
+                />
+              ) : (
+                <CommonMovie
+                  key={movieInfo.id}
+                  img={movieInfo.poster_path}
+                  handleClick={() => handleClick(movieInfo)}
+                />
+              )
+            )}
+          </Slider>
+        </>
+      )}
     </Container>
   );
 };

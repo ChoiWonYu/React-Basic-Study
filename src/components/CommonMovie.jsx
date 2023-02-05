@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Movie from "../asset/movie.png";
 
 const CommonMovie = ({ img, handleClick }) => {
   return (
     <Container>
-      <Img src={Movie} onClick={handleClick} />
+      <Img src={`${process.env.REACT_APP_IMAGE}${img}`} onClick={handleClick} />
     </Container>
   );
 };
