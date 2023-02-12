@@ -7,7 +7,7 @@ const MovieModal = ({ info, handleClose }) => {
   return (
     <Background onClick={handleClose}>
       <Content>
-        <Poster src={Movie} />
+        <Poster src={`${process.env.REACT_APP_IMAGE}${poster_path}`} />
         <TextContainer>
           {overview || "개요"}
           <DescriptionContainer>
