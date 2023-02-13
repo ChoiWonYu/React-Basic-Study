@@ -1,28 +1,62 @@
 import React from "react";
-import { RecoilRoot, useRecoilState } from "recoil";
-import { counterAtom } from "./NumberAtom";
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
+import styled from "styled-components";
+import { counterNumberAtom, counterStateAtom } from "./CounterAtom";
 
 const Counter = () => {
-  const [counter, setCounter] = useRecoilState(counterAtom);
-  const handlePlus = () => {
-    setCounter(counter + 1);
-  };
-  const handleMinus = () => {
-    setCounter(counter - 1);
-  };
-  const handleReset = () => {
-    setCounter(0);
+  const [selected, setSelected] = useRecoilState(counterStateAtom);
+  const [counter, setCounter] = useRecoilState(counterNumberAtom);
+  const resetCounter = useResetRecoilState(counterNumberAtom);
+  const menuData = ["plus", "minus", "reset"];
+
+  const handleNumChange = () => {
+    switch (selected) {
+      case "plus":
+        setCounter((prev) => prev + 1);
+        break;
+      case "minus":
+        setCounter((prev) => prev - 1);
+        break;
+      case "reset":
+        resetCounter();
+    }
   };
   return (
-    <RecoilRoot>
-      <div>
-        {counter}
-        <button onClick={handlePlus}>+1</button>
-        <button onClick={handleMinus}>-1</button>
-        <button onClick={handleReset}>reset</button>
-      </div>
-    </RecoilRoot>
+    <Container>
+      <MenuContainer>
+        {menuData.map((menu, i) => (
+          <Menu
+            key={i}
+            onClick={() => setSelected(menu)}
+            isSelected={selected === menu}
+          >
+            {menu}
+          </Menu>
+        ))}
+      </MenuContainer>
+      {counter}
+      <button onClick={handleNumChange}>{selected}</button>
+    </Container>
   );
 };
 
 export default Counter;
+
+const Container = styled.div`
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const MenuContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Menu = styled.div`
+  flex: 1;
+  color: ${({ isSelected }) => (isSelected ? "red" : "black")};
+  text-align: center;
+`;
