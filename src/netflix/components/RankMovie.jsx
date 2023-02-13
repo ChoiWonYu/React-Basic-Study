@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RankData } from "../style/RankData";
+import { RankData } from "../../style/RankData";
 
 const RankMovie = ({ img, rank, handleClick }) => {
   console.log(`${process.env.REACT_APP_IMAGE}${img}`);
